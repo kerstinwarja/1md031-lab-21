@@ -18,7 +18,6 @@
                 <div style="float:left;">
                     <h3> Halloumiburgare </h3>
                     <img src="https://assets.icanet.se/e_sharpen:80,q_auto,dpr_1.25,w_718,h_718,c_lfill/imagevaultfiles/id_161415/cf_259/halloumiburgare_med_srirachamajonnas_och_soltorkade_tomater.jpg"style="width: 200px;height: 200px;">
-                    
                     <ul>
                         <li>Lakto ovo vegetarisk</li>
                         <li>Gjord på fina råvaror</li>
@@ -28,7 +27,6 @@
                 <div style="float:left;">
                     <h3>Kycklingburgare</h3>
                     <img src="https://cdn.kronfagel.se/app/uploads/2019/07/Kycklingburgare-med-Garlic-Mozzarella.jpg" style="width: 200px;height: 200px;">
-
                     <ul>
                         <li>Gjord på svensk kyckling</li>
                         <li>Innehåller gluten</li>
@@ -45,23 +43,60 @@
                         <li>Innehåller gluten och mjölk</li>
                         <li>Bra för köttisar</li>
                     </ul>
-                    
                 </div>
-
             </section>
             
             <section style="clear:left">
-                <h2>
-                    Kundinformation
-                </h2>
+                <h2>Kundinformation</h2>
                 Här lämnar du nödvändig information
+                <h3>Leveransinformation</h3>
+                <p>
+                    <label for="full name">Namn</label><br>
+                    <input type="text" id="full name" name="fn" required="required" placeholder="För- och efternamn">
+                </p>
                 
+                <p>
+                    <label for="mejladress">E-mail</label><br>
+                    <input type="email" id="email" name="em" required="required" placeholder="E-mail adress">
+                </p>
+                <p>
+                    <label for="street">Gata</label><br>
+                    <input type="text" id="street" name="st" placeholder="Gatuadress">
+                </p>
+                <p>
+                    <label for="housenumber">Hus</label><br>
+                    <input type="number" id="housenumber" name="hn" placeholder="Husnummer">
+                </p>
+                <p>
+                    <label for="payment">Betalningsalternativ</label><br>
+                    <select id="payment" name="pm">
+                        <option>Swish</option>
+                        <option selected="selected">Betalning via bank</option>
+                        <option>Faktura</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="gender">Välj kön</label><br>
+                    <input type="radio" id="man" name="gender" value="man">
+                    <label for="man">man</label><br>
+                    <input type="radio" id="woman" name="gender" value="woman">
+                    <label for="woman">kvinna</label><br>
+                    <input type="radio" checked="checked" id="do not wish to provide" name="gender" value="do not wish to provide">
+                    <label for="do not wish to provide">vill ej ange</label>
+                </p>
+                 
+            </section>
+            <section>
+                <button type="submit">
+                    <img src="https://www.emojimeaning.com/img/img-apple-160/1f354.png"style="width: 15px;height: 15px;">
+                    Skicka beställningen!
+                </button>
             </section>
         </main>
         <hr>
 
         <footer>
-            End notes
+            © 2021 Kerstin AB 
         </footer>
 
 
