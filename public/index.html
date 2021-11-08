@@ -1,16 +1,17 @@
 <!DOCTYPE HTML>
 <html lang="en">
    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
        <title>BurgersOnline</title>
        <meta charset="utf-8"/>
    </head>
 
    <body>
         <header>
-            <h1> Välkommen till BurgersOnline</h1>
+            <h1> Välkommen till BurgerQueen</h1>
         </header>
         <main>
-            <section>
+            <section class="burgermenu" id="burgermenu">
                 <div>
                     <h2> Välj Burgare </h2>
                     Här väljer du din burgare
@@ -18,10 +19,11 @@
                 <div style="float:left;">
                     <h3> Halloumiburgare </h3>
                     <img src="https://assets.icanet.se/e_sharpen:80,q_auto,dpr_1.25,w_718,h_718,c_lfill/imagevaultfiles/id_161415/cf_259/halloumiburgare_med_srirachamajonnas_och_soltorkade_tomater.jpg"style="width: 200px;height: 200px;">
+                    
                     <ul>
-                        <li>Innehåller picklad rödlök</li>
                         <li>Lakto ovo vegetarisk</li>
-                        <li>Innehåller mjölk och gluten</li>
+                        <li>Serveras med krispigt bröd</li>
+                        <li>Innehåller <span class="allergies">mjölk</span> och <span class="allergies">gluten</span></li>
                      </ul>
                 </div>
                 <div style="float:left;">
@@ -29,8 +31,8 @@
                     <img src="https://cdn.kronfagel.se/app/uploads/2019/07/Kycklingburgare-med-Garlic-Mozzarella.jpg" style="width: 200px;height: 200px;">
                     <ul>
                         <li>Gjord på svensk kyckling</li>
-                        <li>Färska grönsaker</li>
-                        <li>Innehåller mjölk och gluten</li>
+                        <li>Prisbelönad Caesar sås</li>
+                        <li>Innehåller <span class="allergies">mjölk</span> och <span class="allergies">gluten</span></li>
                     </ul>
                 </div>
                 <div style="float:left;">
@@ -39,14 +41,14 @@
                     <img src="https://bbqlovers.se/wp-content/uploads/2017/04/Smashburgare6-282x300.jpg" style="width: 200px;height: 200px;">
 
                     <ul>
-                        <li>Gjord på högrevsfärs</li>
-                        <li>Bra för köttisar</li>
-                        <li>Innehåller mjölk och gluten</li>
+                        <li>100% nötkött från Norrland</li>
+                        <li>Västerbottensost</li>
+                        <li>Innehåller <span class="allergies">mjölk</span> och <span class="allergies">gluten</span></li>
                     </ul>
                 </div>
             </section>
             
-            <section style="clear:left">
+            <section style="clear:left" id="custormerinformation">
                 <h2>Kundinformation</h2>
                 Här lämnar du nödvändig information
                 <h3>Leveransinformation</h3>

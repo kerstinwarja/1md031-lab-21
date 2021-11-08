@@ -1,1 +1,15 @@
-/*empty*/
+/*så skriver du kommentarer*/
+@import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
+body {
+    font-family:arial;
+}
+ 
+ .allergies {  /*class*/
+    font-weight: bold;  /* class="allergies" in bold font*/
+ }
+ #burgermenu {    /*id*/
+   background: black;
+   overflow:auto; /*fråga om detta!! annars blev inte hela section färgad*/
+   color: white
+ }
+ 
