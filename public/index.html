@@ -1,112 +1,17 @@
-<!DOCTYPE HTML>
-<html lang="en">
-   <head>
-        <link rel="stylesheet" type="text/css" href="style.css">
-       <title>BurgersOnline</title>
-       <meta charset="utf-8"/>
-   </head>
-
-   <body>
-        <section>
-            <header id= "head">
-                <img src="https://www.appmachine.com/wp-content/uploads/2016/02/No-Branding-Header-Background-1.jpg">
-                <h1> Välkommen till BurgerQueen</h1>
-            </header>
-        </section>
-        
-        <main>
-            <section class="menuwrapper">
-                <div>
-                    <h2> Välj Burgare </h2>
-                    Här väljer du din burgare
-                </div>
-                <div id= "burgerwrapper">
-                    <div class="burger1" style="float:left;">
-                        <h3> Halloumiburgare </h3>
-                        <img src="https://assets.icanet.se/e_sharpen:80,q_auto,dpr_1.25,w_718,h_718,c_lfill/imagevaultfiles/id_161415/cf_259/halloumiburgare_med_srirachamajonnas_och_soltorkade_tomater.jpg"style="width: 200px;height: 200px;">
-                    
-                        <ul>
-                            <li>Lakto ovo vegetarisk</li>
-                            <li>Serveras med krispigt bröd</li>
-                            <li>Innehåller <span class="allergies">mjölk</span> och <span class="allergies">gluten</span></li>
-                        </ul>
-                    </div>
-                    <div class="burger2" style="float:left;">
-                        <h3>Kycklingburgare</h3>
-                        <img src="https://cdn.kronfagel.se/app/uploads/2019/07/Kycklingburgare-med-Garlic-Mozzarella.jpg" style="width: 200px;height: 200px;">
-                        <ul>
-                            <li>Gjord på svensk kyckling</li>
-                            <li>Prisbelönad Caesarsås</li>
-                            <li>Innehåller <span class="allergies">mjölk</span> och <span class="allergies">gluten</span></li>
-                        </ul>
-                    </div>
-                    <div  class="burger3" style="float:left;">
-                        <h3>Smashed burger</h3>
-
-                        <img src="https://bbqlovers.se/wp-content/uploads/2017/04/Smashburgare6-282x300.jpg" style="width: 200px;height: 200px;">
-
-                        <ul>
-                            <li>100% nötkött från Norrland</li>
-                            <li>Västerbottensost</li>
-                            <li>Innehåller <span class="allergies">mjölk</span> och <span class="allergies">gluten</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-            
-            <section style="clear:left" id="customerinformation">
-                <h2>Kundinformation</h2>
-                Här lämnar du nödvändig information
-                <h3>Leveransinformation</h3>
-                <p>
-                    <label for="full name">Namn</label><br>
-                    <input type="text" id="full name" name="fn" required="required" placeholder="För- och efternamn">
-                </p>
-                
-                <p>
-                    <label for="mejladress">E-mail</label><br>
-                    <input type="email" id="email" name="em" required="required" placeholder="E-mail adress">
-                </p>
-                <p>
-                    <label for="street">Gata</label><br>
-                    <input type="text" id="street" name="st" placeholder="Gatuadress">
-                </p>
-                <p>
-                    <label for="housenumber">Hus</label><br>
-                    <input type="number" id="housenumber" name="hn" placeholder="Husnummer">
-                </p>
-                <p>
-                    <label for="payment">Betalningsalternativ</label><br>
-                    <select id="payment" name="pm">
-                        <option>Swish</option>
-                        <option selected="selected">Betalning via bank</option>
-                        <option>Faktura</option>
-                    </select>
-                </p>
-                <p>
-                    <label for="gender">Välj kön</label><br>
-                    <input type="radio" id="man" name="gender" value="man">
-                    <label for="man">man</label><br>
-                    <input type="radio" id="woman" name="gender" value="woman">
-                    <label for="woman">kvinna</label><br>
-                    <input type="radio" checked="checked" id="do not wish to provide" name="gender" value="do not wish to provide">
-                    <label for="do not wish to provide">vill ej ange</label>
-                </p>
-                 
-            </section>
-            <section>
-                <button type="submit">
-                    <img src="https://www.emojimeaning.com/img/img-apple-160/1f354.png"style="width: 15px;height: 15px;">
-                    Skicka beställningen!
-                </button>
-            </section>
-        </main>
-        <hr>
-
-        <footer>
-            © 2021 Kerstin AB 
-        </footer>
-
-
-   </body>
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
 </html>
