@@ -1,0 +1,24 @@
+[
+    {
+      "name": "Halloumiburgare",
+      "kCal": 850,
+      "lactose": true,
+      "gluten": true,
+      "img": "https://assets.icanet.se/e_sharpen:80,q_auto,dpr_1.25,w_718,h_718,c_lfill/imagevaultfiles/id_161415/cf_259/halloumiburgare_med_srirachamajonnas_och_soltorkade_tomater.jpg"
+    },
+    {
+        "name": "Kycklingburgare",
+        "kCal": 850,
+        "lactose": true,
+        "gluten": true,
+        "img": "https://cdn.kronfagel.se/app/uploads/2019/07/Kycklingburgare-med-Garlic-Mozzarella.jpg"
+      },
+      {
+        "name": "Smashed burger",
+        "kCal": 850,
+        "lactose": true,
+        "gluten": true,
+        "img": "https://bbqlovers.se/wp-content/uploads/2017/04/Smashburgare6-282x300.jpg"
+      }
+      
+]
