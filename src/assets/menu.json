@@ -1,24 +1,28 @@
 [
     {
       "name": "Halloumiburgare",
-      "kCal": 850,
       "lactose": true,
       "gluten": true,
-      "img": "https://assets.icanet.se/e_sharpen:80,q_auto,dpr_1.25,w_718,h_718,c_lfill/imagevaultfiles/id_161415/cf_259/halloumiburgare_med_srirachamajonnas_och_soltorkade_tomater.jpg"
+      "picture": "https://assets.icanet.se/e_sharpen:80,q_auto,dpr_1.25,w_718,h_718,c_lfill/imagevaultfiles/id_161415/cf_259/halloumiburgare_med_srirachamajonnas_och_soltorkade_tomater.jpg",
+      "info1": "Lakto ovo vegetarisk",
+      "info2":"Serveras med krispigt bröd"
+
     },
     {
         "name": "Kycklingburgare",
-        "kCal": 850,
         "lactose": true,
-        "gluten": true,
-        "img": "https://cdn.kronfagel.se/app/uploads/2019/07/Kycklingburgare-med-Garlic-Mozzarella.jpg"
+        "gluten": false,
+        "picture": "https://cdn.kronfagel.se/app/uploads/2019/07/Kycklingburgare-med-Garlic-Mozzarella.jpg",
+        "info1":"Gjord på svensk kyckling",
+        "info2":"Prisbelönad caesarsås"
       },
       {
         "name": "Smashed burger",
-        "kCal": 850,
         "lactose": true,
         "gluten": true,
-        "img": "https://bbqlovers.se/wp-content/uploads/2017/04/Smashburgare6-282x300.jpg"
+        "picture": "https://bbqlovers.se/wp-content/uploads/2017/04/Smashburgare6-282x300.jpg",
+        "info1": "100% nötkött från Norrland",
+        "info2":"Västerbottensost"
       }
       
 ]
