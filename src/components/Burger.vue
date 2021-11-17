@@ -13,6 +13,18 @@
         Innehåller <span class="allergies"> gluten </span>
       </li>
     </ul>
+    
+    <section class="ordered">Antal:{{amountOrdered}}</section>
+    <button v-on:click="removeBurger" type="button" style="float:left;">
+      -
+    </button>
+
+    <button v-on:click="addBurger" type="button">
+      +
+    </button>
+
+
+
   </div>
 </template>
 
@@ -21,8 +33,38 @@ export default {
   name: 'Burger',
   props: {
     burger: Object
-  }
+  },
+  data: function () {
+    return {
+      amountOrdered: 0,
+    }
+  },
+  methods: {
+    removeBurger: function (){
+      this.amountOrdered -= 1;
+      if(this.amountOrdered<0){
+        this.amountOrdered=0;
+      }
+    this.$emit('orderedBurger', { name:   this.burger.name,
+                                amount: this.amountOrdered
+                              }
+    );
+    
+      
+    },
+    addBurger: function(){
+      this.amountOrdered += 1;
+      this.$emit('orderedBurger', { name:   this.burger.name,
+                                amount: this.amountOrdered
+                              }
+  );
+
+    }
+
+
+  } 
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

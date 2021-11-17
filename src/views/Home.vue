@@ -18,6 +18,7 @@
             v-for="burger in burgers"
             v-bind:burger="burger"
             v-bind:key="burger.name"
+            v-on:orderedBurger="addToOrder($event)"
         />  
       </div>
 
@@ -58,43 +59,44 @@
       <h3>Leveransinformation</h3>
       <p>
         <label for="full name">Namn</label><br>
-        <input type="text" id="full name" name="fn" required="required" placeholder="För- och efternamn">
+        <input type="text" id="full name" v-model="fn" required="required" placeholder="För- och efternamn">
       </p>
                 
       <p>
         <label for="mejladress">E-mail</label><br>
-        <input type="email" id="email" name="em" required="required" placeholder="E-mail adress">
+        <input type="email" id="email" v-model="em" required="required" placeholder="E-mail adress">
       </p>
       <p>
         <label for="street">Gata</label><br>
-        <input type="text" id="street" name="st" required="required" placeholder="Gatuadress">
+        <input type="text" id="street" v-model="st" required="required" placeholder="Gatuadress">
       </p>
       <p>
         <label for="housenumber">Hus</label><br>
-        <input type="number" id="housenumber" name="hn" required="required" placeholder="Husnummer">
+        <input type="number" id="housenumber" v-model="hn" required="required" placeholder="Husnummer">
       </p>
       <p>
         <label for="payment">Betalningsalternativ</label><br>
-        <select id="payment" name="pm">
+        <select id="payment" v-model="pm" name="pm">
             <option>Swish</option>
-            <option selected="selected">Betalning via bank</option>
+            <option selected="selected">Betalning via bank </option>
             <option>Faktura</option>
         </select>
       </p>
       <p>
         <label for="gender">Välj kön</label><br>
-        <input type="radio" id="man" name="gender" value="man">
+        <input type="radio" id="man"  v-model="gender" value="man">
         <label for="man">man</label><br>
-        <input type="radio" id="woman" name="gender" value="woman">
+        <input type="radio" id="woman"  v-model="gender" value="woman">
         <label for="woman">kvinna</label><br>
-        <input type="radio" checked="checked" id="do not wish to provide" name="gender" value="do not wish to provide">
-        <label for="do not wish to provide">vill ej ange</label>
+        <input type="radio"  id="do not wish to provide" v-model="gender" value="do not wish to provide">
+        <label for="do not wish to provide"> vill ej ange</label>
+        
       </p>
                  
     </section>
 
     <section>
-      <button type="submit">
+      <button v-on:click="sendInfoClick" type="submit">
         <img src="https://www.emojimeaning.com/img/img-apple-160/1f354.png" style="width: 15px;height: 15px;">
         Skicka beställningen!
       </button>
@@ -139,17 +141,27 @@ export default {
   },
   data: function () {
     return {
-      //to use menuItem uncomment
       //burgers: burgerArray
-      burgers:menu
+      burgers:menu,
+      fn: "",
+      em:"",
+      st:"",
+      hn:"",
+      pm:"",
+      gender:"",
+      orderedBurgers:[]
               
     }
   },
   methods: {
+    addToOrder: function (event) {
+      this.orderedBurgers[event.name] = event.amount;
+},
     getOrderNumber: function () {
       return Math.floor(Math.random()*100000);
     },
     addOrder: function (event) {
+
       let offset = {x: event.currentTarget.getBoundingClientRect().left,
                     y: event.currentTarget.getBoundingClientRect().top};
       socket.emit("addOrder", { orderId: this.getOrderNumber(),
@@ -158,6 +170,16 @@ export default {
                                 orderItems: ["Beans", "Curry"]
                               }
                  );
+    },
+    sendInfoClick: function (){
+      console.log(
+        this.fn,
+        this.em, 
+        this.st, 
+        this.hn,
+        this.pm, 
+        this.gender,
+        this.orderedBurgers);
     }
   }
 }
