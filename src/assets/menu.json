@@ -1,7 +1,7 @@
 [
     {
       "name": "Halloumiburgare",
-      "lactose": true,
+      "lactose": false,
       "gluten": true,
       "picture": "https://assets.icanet.se/e_sharpen:80,q_auto,dpr_1.25,w_718,h_718,c_lfill/imagevaultfiles/id_161415/cf_259/halloumiburgare_med_srirachamajonnas_och_soltorkade_tomater.jpg",
       "info1": "Lakto ovo vegetarisk",

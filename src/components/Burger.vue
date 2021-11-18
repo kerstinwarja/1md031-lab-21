@@ -9,21 +9,23 @@
       <li v-if="burger.lactose"> 
         Innehåller <span class="allergies">laktos</span> 
       </li>
+      <li v-else><span class="allergies">Laktosfri</span></li>
       <li v-if="burger.gluten"> 
         Innehåller <span class="allergies"> gluten </span>
       </li>
+      <li v-else><span class="allergies">Glutenfri</span></li>
     </ul>
     
-    <section class="ordered">Antal:{{amountOrdered}}</section>
-    <button v-on:click="removeBurger" type="button" style="float:left;">
-      -
-    </button>
-
-    <button v-on:click="addBurger" type="button">
-      +
-    </button>
-
-
+    
+    <div class="burgerbuttons">
+      <button v-on:click="removeBurger" type="button" class="removebutton" style="float:left;">
+       -
+      </button>
+      Antal: {{amountOrdered}}
+      <button v-on:click="addBurger" type="button" class="addbutton">
+        +
+      </button>
+    </div>
 
   </div>
 </template>
@@ -36,15 +38,16 @@ export default {
   },
   data: function () {
     return {
-      amountOrdered: 0,
+      amountOrdered: null
     }
   },
   methods: {
     removeBurger: function (){
       this.amountOrdered -= 1;
-      if(this.amountOrdered<0){
-        this.amountOrdered=0;
+      if(this.amountOrdered < 1 ){
+        this.amountOrdered=null;
       }
+      
     this.$emit('orderedBurger', { name:   this.burger.name,
                                 amount: this.amountOrdered
                               }
@@ -88,11 +91,24 @@ export default {
 }
 .allergies {  /*class*/
     font-weight: bold;  /* class="allergies" in bold font*/
+    color: salmon;
  }
- section {
+section {
    margin: 2px 10px 0px 10px;
    /*Margins top right bottom left*/
 }
+.burgerbuttons{
+  padding-left: 70px;
+  
+}
+.addbutton{
+  background:green; 
+}
+.removebutton{
+  background:red
+}
+
+
 
 
 </style>

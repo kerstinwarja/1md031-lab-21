@@ -22,35 +22,6 @@
         />  
       </div>
 
-      <!--<div id= "burgerwrapper">
-        <div class="burger1" style="float:left;">
-            <h3> Halloumiburgare </h3>
-            <img src="https://assets.icanet.se/e_sharpen:80,q_auto,dpr_1.25,w_718,h_718,c_lfill/imagevaultfiles/id_161415/cf_259/halloumiburgare_med_srirachamajonnas_och_soltorkade_tomater.jpg" >      
-            <ul>
-              <li>Lakto ovo vegetarisk</li>
-              <li>Serveras med krispigt bröd</li>
-              <li>Innehåller <span class="allergies">mjölk</span> och <span class="allergies">gluten</span></li>
-            </ul>
-        </div>
-        <div class="burger2" style="float:left;">
-          <h3>Kycklingburgare</h3>
-          <img src="https://cdn.kronfagel.se/app/uploads/2019/07/Kycklingburgare-med-Garlic-Mozzarella.jpg" >
-          <ul>
-            <li>Gjord på svensk kyckling</li>
-            <li>Prisbelönad caesarsås</li>
-            <li>Innehåller <span class="allergies">mjölk</span> och <span class="allergies">gluten</span></li>
-          </ul>
-        </div>
-        <div  class="burger3" style="float:left;">
-          <h3>Smashed burger</h3>
-          <img src="https://bbqlovers.se/wp-content/uploads/2017/04/Smashburgare6-282x300.jpg">
-          <ul>
-            <li>100% nötkött från Norrland</li>
-            <li>Västerbottensost</li>
-            <li>Innehåller <span class="allergies">mjölk</span> och <span class="allergies">gluten</span></li>
-          </ul>
-        </div>
-      </div>-->
     </section>
             
     <section style="clear:left" id="customerinformation">
@@ -66,14 +37,14 @@
         <label for="mejladress">E-mail</label><br>
         <input type="email" id="email" v-model="em" required="required" placeholder="E-mail adress">
       </p>
-      <p>
+      <!--<p>
         <label for="street">Gata</label><br>
         <input type="text" id="street" v-model="st" required="required" placeholder="Gatuadress">
       </p>
       <p>
         <label for="housenumber">Hus</label><br>
         <input type="number" id="housenumber" v-model="hn" required="required" placeholder="Husnummer">
-      </p>
+      </p>-->
       <p>
         <label for="payment">Betalningsalternativ</label><br>
         <select id="payment" v-model="pm" name="pm">
@@ -92,8 +63,23 @@
         <label for="do not wish to provide"> vill ej ange</label>
         
       </p>
+      Ange leveransadress på kartan:
+      
+      <div class="mapwrapper">
+        <div id="map" v-on:click="setLocation">{{location}}
+            <div
+              v-bind:style="{
+                left: location.x + 'px',
+                top: location.y + 'px',
+              }" 
+            >
+              T
+            </div>
+          </div>
+      </div>
                  
     </section>
+    
 
     <section>
       <button v-on:click="sendInfoClick" type="submit">
@@ -107,9 +93,9 @@
     © 2021 Kerstin AB 
   </footer>
   
-  <div id="map" v-on:click="addOrder">
+  <!--<div id="map" v-on:click="addOrder">
     click here
-  </div>
+  </div>-->
 
 </template>
 
@@ -130,7 +116,7 @@ const socket = io();
   this.info2=i2;
 }*/
 //array with my burgers
-/*const burgerArray=[new MenuItem("Halloumiburgare","https://assets.icanet.se/e_sharpen:80,q_auto,dpr_1.25,w_718,h_718,c_lfill/imagevaultfiles/id_161415/cf_259/halloumiburgare_med_srirachamajonnas_och_soltorkade_tomater.jpg",true,true,"Lakto ovo vegetarisk","Serveras med krispigt bröd"),
+/*const burgerArray=[new MenuItem("Halloumiburgare","https://assets.icanet.se/e_sharpen:80,q_auto,dpr_1.25,w_718,h_718,c_lfill/imagevaultfiles/id_161415/cf_259/halloumiburgare_med_srirachamajonnas_och_soltorkade_tomater.jpg",true,false,"Lakto ovo vegetarisk","Serveras med krispigt bröd"),
                    new MenuItem("Kycklingburgare","https://cdn.kronfagel.se/app/uploads/2019/07/Kycklingburgare-med-Garlic-Mozzarella.jpg",false,true,"Gjord på svensk kyckling","Prisbelönad caesarsås"),
                    new MenuItem("Smashed burger","https://bbqlovers.se/wp-content/uploads/2017/04/Smashburgare6-282x300.jpg",true,true,"100% nötkött från Norrland","Västerbottensost")];
 */
@@ -145,22 +131,43 @@ export default {
       burgers:menu,
       fn: "",
       em:"",
-      st:"",
-      hn:"",
+      //st:"",
+      //hn:"",
       pm:"",
       gender:"",
-      orderedBurgers:[]
+      orderedBurgers:{},
+      location:{x:0,y:0},
+      personalInformation:""
               
     }
   },
   methods: {
+    sendInfoClick: function () {
+      this.personalInformation = {
+        name: this.fn,
+        email: this.em,
+        payment: this.pm,
+        gender: this.gender
+      }
+      console.log(this.personalInformation,this.orderedBurgers);
+
+      socket.emit("addOrder", {
+        orderId: this.getOrderNumber(),
+        details: this.location,
+        orderItems: this.orderedBurgers,
+        personalInformation:this.personalInformation
+        
+      });
+    },
+    
     addToOrder: function (event) {
       this.orderedBurgers[event.name] = event.amount;
-},
+      
+  },
     getOrderNumber: function () {
       return Math.floor(Math.random()*100000);
     },
-    addOrder: function (event) {
+    /*addOrder: function () {
 
       let offset = {x: event.currentTarget.getBoundingClientRect().left,
                     y: event.currentTarget.getBoundingClientRect().top};
@@ -170,27 +177,48 @@ export default {
                                 orderItems: ["Beans", "Curry"]
                               }
                  );
-    },
-    sendInfoClick: function (){
-      console.log(
-        this.fn,
-        this.em, 
-        this.st, 
-        this.hn,
-        this.pm, 
-        this.gender,
-        this.orderedBurgers);
+    },*/
+    
+    setLocation: function (event) {
+      var offset = {
+        x: event.currentTarget.getBoundingClientRect().left,
+        y: event.currentTarget.getBoundingClientRect().top,
+      };
+      this.location = {
+          x: event.clientX - 10 - offset.x,
+          y: event.clientY - 10 - offset.y,
+      };
     }
-  }
-}
+  },
+};
 </script>
 
 <style>
-  #map {
-    width: 300px;
-    height: 300px;
-    background-color: red;
+  .mapwrapper{
+    height:500px;
+    width:1000px;
+    overflow:scroll;
+    margin-left: 10px;
+    margin-bottom: 20px;
   }
+  #map {
+    width: 1920px;
+    height: 1078px;
+    background:url("/img/polacks.jpg");
+    cursor: crosshair;
+    background-repeat: no-repeat;
+    position: relative;
+
+  }
+  #map div{
+  position: absolute;
+  background: black;
+  color: white;
+  border-radius: 10px;
+  width:20px;
+  height:20px;
+  text-align: center;
+}
   @import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
 body {
     font-family:arial;
