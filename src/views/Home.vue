@@ -47,7 +47,7 @@
       </p>-->
       <p>
         <label for="payment">Betalningsalternativ</label><br>
-        <select id="payment" v-model="pm" name="pm">
+        <select id="payment" v-model="pm">
             <option>Swish</option>
             <option selected="selected">Betalning via bank </option>
             <option>Faktura</option>
@@ -66,7 +66,7 @@
       Ange leveransadress på kartan:
       
       <div class="mapwrapper">
-        <div id="map" v-on:click="setLocation">{{location}}
+        <div id="map" v-on:click="setLocation">
             <div
               v-bind:style="{
                 left: location.x + 'px',
@@ -93,9 +93,6 @@
     © 2021 Kerstin AB 
   </footer>
   
-  <!--<div id="map" v-on:click="addOrder">
-    click here
-  </div>-->
 
 </template>
 
@@ -133,8 +130,8 @@ export default {
       em:"",
       //st:"",
       //hn:"",
-      pm:"",
-      gender:"",
+      pm:"Swish",
+      gender:"do not wish to provide",
       orderedBurgers:{},
       location:{x:0,y:0},
       personalInformation:""
@@ -158,6 +155,8 @@ export default {
         personalInformation:this.personalInformation
         
       });
+      alert("order skickad!")
+      
     },
     
     addToOrder: function (event) {
@@ -224,10 +223,6 @@ body {
     font-family:arial;
 }
  
-.allergies {  /*class*/
-    font-weight: bold;  /* class="allergies" in bold font*/
- }
-/*ALL SECTIONS*/
 section {
    margin: 2px 10px 0px 10px;
    /*Margins top right bottom left*/
@@ -259,7 +254,6 @@ button{
 }
 
 /* MAIN  */
-/*       */
 
 /*Hela menyn*/
 .menuwrapper{ 
@@ -275,24 +269,6 @@ button{
    display: grid;
    grid-gap: 10px;
    grid-template-columns: 33% 33% 33%;
-}
-
-#burgerwrapper img{
-   padding-left: 40px;
-   width: 200px;
-   height: 200px;
-}
-#burgerwrapper h3{
-   padding-left: 60px;
-}
-.burger1{
-   border: 1px dotted #ff9900; 
-}
-.burger2{
-   border: 1px dotted #ff9900;  
-}
-.burger3{
-   border: 1px dotted #ff9900;
 }
 
 /*CUSTOMERINFORMATION*/
